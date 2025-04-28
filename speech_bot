@@ -7,7 +7,7 @@ engine = pyttsx3.init()
 engine.setProperty('rate', 125)
 engine.setProperty('volume', 1.0)
 
-# Noktalama işaretlerini kaldırmak için
+
 def clean_text(text):
     text = text.translate(str.maketrans('', '', string.punctuation))
     return text
@@ -35,7 +35,7 @@ def listen():
         print("❌ Internet connection problem.")
         return None
 
-# HyperGlide için hazır cevaplar
+
 hyperglide_knowledge = {
     "what is the size and capacity of hyperglide": 
     "Hey there, Earthling! HyperGlide is designed to provide a spacious and comfortable living environment. While specific dimensions aren't outlined, it includes private rooms enhanced with essential facilities to accommodate the crew’s comfort and well-being. HyperGlide can host up to 100 people at a time, offering enough room for scientific collaboration, recreational activities, and social bonding. 🌟",
@@ -77,21 +77,21 @@ def get_response(user_input):
         "hello what's your name": "I am your voice assistant"
     }
 
-    # Önce hazır HyperGlide cevapları kontrol edelim
+    
     for question, answer in hyperglide_knowledge.items():
         if question in user_input:
             return answer
 
-    # Eğer HyperGlide değilse, normal selamlamalara bakalım
+    
     for phrase, reply in greetings.items():
         if phrase in user_input:
             return reply
     
-    # Hiçbir eşleşme yoksa Google'dan ara
+
     speak("Let me search for you, please wait...")
     return search_summary(user_input)
 
-# Ana döngü
+
 while True:
     sentence = listen()
     if sentence:
